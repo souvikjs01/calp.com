@@ -7,7 +7,6 @@ import { revalidatePath } from "next/cache";
 export async function updateAvailabilityAction(data: FormData) {
     const session = await requireUser();
     const rawData = Object.fromEntries(data.entries())
-    console.log('raw data: ', rawData);
     
     const availabilityData = Object.keys(rawData).filter((key) => key.startsWith("id-"))
     .map((key) => {
@@ -19,7 +18,7 @@ export async function updateAvailabilityAction(data: FormData) {
             tillTime: rawData[`tillTime-${id}`] as string
         }
     });
-    console.log('availability data ', availabilityData);
+    // console.log('availability data ', availabilityData);
 
     try {
         await prisma.$transaction(
