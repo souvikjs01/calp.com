@@ -25,6 +25,9 @@ export async function GET(req: NextRequest) {
         })
 
         const { grantId, email } = response;
+        if (!grantId || !email) {
+            throw new Error('Invalid response from Nylas.');
+        }
         await prisma.user.update({
             where: {
                 id: session.user?.id
