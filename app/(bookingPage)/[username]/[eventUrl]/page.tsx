@@ -1,5 +1,4 @@
 import { CreateMeetingAction } from '@/actions/createMeetingServer';
-import Calendar from '@/components/bookingForm/Calendar';
 import RenderCalendar from '@/components/bookingForm/RenderCalendar';
 import TimeTable from '@/components/timeTableForm/TimeTable';
 import { Button } from '@/components/ui/button';

@@ -1,5 +1,4 @@
 import { updateAvailabilityAction } from '@/actions/availability';
-import SubmitButton from '@/components/submitButton/SubmitButton';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';

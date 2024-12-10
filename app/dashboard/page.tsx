@@ -11,10 +11,15 @@ import {
   DropdownMenuSeparator, 
   DropdownMenuTrigger 
 } from "@/components/ui/dropdown-menu";
-import { Switch } from "@/components/ui/switch";
 import { prisma } from "@/lib/db"
 import requireUser from "@/lib/hooks"
-import { ExternalLink, Link2, Pen, Settings, Settings2, Trash, User2 } from "lucide-react";
+import { 
+  ExternalLink,
+  Pen, 
+  Settings, 
+  Trash, 
+  User2 
+} from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 

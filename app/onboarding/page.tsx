@@ -13,7 +13,7 @@ import { useToast } from '@/hooks/use-toast'
 import { useRouter } from 'next/navigation'
 
 
-export default function page() {    
+export default function Onboarding() {    
     const form = useForm<z.infer<typeof onboardingSchema>>({
         resolver: zodResolver(onboardingSchema),
         defaultValues: {

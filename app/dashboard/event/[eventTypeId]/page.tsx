@@ -25,7 +25,7 @@ async function getData(eventTypeId: string) {
 }
 
 export default async function EditRoute({params}: {params: { eventTypeId: string}}) {
-  const data = await getData(params.eventTypeId);
+  await getData(params.eventTypeId);
 
   return (
     <EditEventTypeForm />
