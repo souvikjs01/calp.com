@@ -34,7 +34,7 @@ async function getData(userId: string) {
 }
 export default async function DashboardLayout({children} : {children: ReactNode}) {
     const session = await requireUser();
-    const data = await getData(session.user?.id as string);
+    await getData(session.user?.id as string);
   return (
     <>
         <div className=' min-h-screen w-full grid md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]'>

@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Separator } from "@/components/ui/separator"
 import { prisma } from '@/lib/db'
 import { CalendarX2, Clock, VideoIcon } from 'lucide-react';
 import { notFound } from 'next/navigation';
@@ -150,7 +149,7 @@ export default async function BookingFormRoute({params, searchParams}
                     </div>
                 </div>
                 {/* <Separator orientation='vertical' className=' h-full w-[1px]'/>  */}
-                <RenderCalendar availability={data.User?.availability as any}/>
+                <RenderCalendar availability={data.User?.availability!}/>
 
                 {/* <Separator orientation='vertical' className=' h-full w-[1px]'/>  */}
                 <TimeTable 
