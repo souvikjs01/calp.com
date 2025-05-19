@@ -49,7 +49,7 @@ export default function RootLayout({
               routerConfig={extractRouterConfig(ourFileRouter)}
             />
             {children}
-            <Toaster/>
+            <Toaster richColors/>
           </ThemeProvider>
       </body>
     </html>

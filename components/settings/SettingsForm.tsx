@@ -1,7 +1,20 @@
 'use client'
 import React, { useState } from 'react'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card'
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form'
+import { 
+    Card, 
+    CardContent, 
+    CardDescription, 
+    CardHeader, 
+    CardTitle 
+} from '../ui/card'
+import { 
+    Form, 
+    FormControl, 
+    FormField, 
+    FormItem, 
+    FormLabel, 
+    FormMessage 
+} from '../ui/form'
 import { Input } from '../ui/input'
 import { useForm } from 'react-hook-form'
 import { settingFormSchema, settingFormSchemaType } from '@/lib/zodSchemas'
@@ -10,9 +23,9 @@ import { Button } from '../ui/button'
 import { Label } from '../ui/label'
 import { Loader2, X } from 'lucide-react'
 import { UploadDropzone } from '@/lib/uploadThing'
-import { useToast } from '@/hooks/use-toast'
 import { SettingsAction } from '@/actions/settings'
 import { useRouter } from 'next/navigation'
+import { toast } from 'sonner'
 
 interface IAppsProps{
     fullName: string;
@@ -27,22 +40,22 @@ export default function SettingsForm({ fullName, email, profileImage }: IAppsPro
           profileImage: profileImage,
         },
     })
-    const { toast } = useToast();
     const [loading, setLoading] = useState(false)
     const [currentProfileImage, setcurrentProfileImage] = useState(profileImage)
+
+    // remove the current profile image:
     const handleDeleteImage = () => {
         setcurrentProfileImage("");
         form.setValue("profileImage", "");
     }
+
     const router = useRouter();
     const onSubmit = async (data: settingFormSchemaType) => {
         setLoading(true);
         const response = await SettingsAction(data);
         setLoading(false)
         if(response.error) {
-            toast({
-                title: response.error
-            })
+            toast.error(response.error || "Something went wrong");
         }
         else if(response.success) {
             setcurrentProfileImage(data.profileImage)
@@ -92,7 +105,7 @@ export default function SettingsForm({ fullName, email, profileImage }: IAppsPro
                                 />
                                 <Button 
                                     onClick={handleDeleteImage}
-                                    className=' absolute -top-3 -right-3' 
+                                    className=' absolute -top-3 -right-3 rounded-full' 
                                     variant='destructive' 
                                     size='icon'
                                     type='button'
@@ -101,36 +114,22 @@ export default function SettingsForm({ fullName, email, profileImage }: IAppsPro
                                 </Button>
                             </div>
                         ) : (
-                            <UploadDropzone onClientUploadComplete={(res) => {
-                                const url = res[0].url
-                                setcurrentProfileImage(res[0].url)
-                                form.setValue("profileImage", url);
-                                toast({
-                                    title: 'Profile Image has been uploaded'
-                                })
-                            }} 
-                            onUploadError={(err) => {
-                                console.log('Something went wrong ', err);
-                                toast({
-                                    title: 'Something went wrong'
-                                })
-                            }}
-                            endpoint='imageUploader'/>
+                            <UploadDropzone 
+                                onClientUploadComplete={(res) => {
+                                    const url = res[0].url
+                                    setcurrentProfileImage(res[0].url)
+                                    form.setValue("profileImage", url);
+                                    toast.success("Profile Image has been uploaded");
+                                }} 
+                                onUploadError={(err) => {
+                                    console.log('Something went wrong ', err);
+                                    toast.error("Something went wrong");
+                                }}
+                                endpoint='imageUploader'
+                            />
                         )}
                     </div>
-                    
-                    {/* <FormField
-                        control={form.control}
-                        name="profileImage"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormControl>
-                                    <input type='hidden' value={currentProfileImage} />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    /> */}
+        
                     <Button type='submit'>
                         {loading ? (<Loader2 className=' size-4 animate-spin'/>) : ("Save Changes")}
                     </Button>

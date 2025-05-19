@@ -27,6 +27,10 @@ export default async function Settingsroute() {
   const session = await requireUser();
   const data = await getData(session.user?.id as string) 
   return (
-    <SettingsForm fullName={data.name as string} email={data.email} profileImage={data.image as string}  />
+    <SettingsForm 
+      fullName={data.name as string} 
+      email={data.email} 
+      profileImage={data.image as string}  
+    />
   )
 }
