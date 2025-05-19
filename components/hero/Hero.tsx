@@ -74,7 +74,7 @@ export default function Hero() {
                 </defs>
             </svg>
             <img 
-                src="/hero.png" 
+                src="/calp.png" 
                 alt="hero" 
                 className=' relative object-cover w-full border rounded-lg shadow-2xl lg:rounded-2xl'
             />

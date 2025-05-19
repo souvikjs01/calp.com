@@ -3,10 +3,7 @@
 import { prisma } from "@/lib/db";
 import requireUser from "@/lib/hooks"
 import { onboardingSchemaType } from "@/lib/zodSchemas";
-// interface OnboardingResult {
-//     error?: string;
-//     success?: string;
-// }
+
 export async function OnboardingAction(formData: onboardingSchemaType) {
     const session = await requireUser();
     if(!formData.fullName || !formData.userName) {
@@ -25,7 +22,7 @@ export async function OnboardingAction(formData: onboardingSchemaType) {
                 error: "Username already taken, try another one."
             }
         }
-        const data = await prisma.user.update({
+        await prisma.user.update({
             where: {
                 id: session.user?.id
             },

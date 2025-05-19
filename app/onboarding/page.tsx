@@ -1,6 +1,19 @@
 "use client"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import { 
+    Card, 
+    CardContent, 
+    CardDescription, 
+    CardHeader, 
+    CardTitle 
+} from '@/components/ui/card'
+import { 
+    Form, 
+    FormControl, 
+    FormField, 
+    FormItem, 
+    FormLabel, 
+    FormMessage 
+} from '@/components/ui/form'
 import React, { useState } from 'react'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -46,7 +59,7 @@ export default function Onboarding() {
       <Card>
         <CardHeader>
             <CardTitle>
-                Welcome to CalPro
+                Welcome to Caln.com
             </CardTitle>
             <CardDescription>
                 We need the following information to set up your profile!

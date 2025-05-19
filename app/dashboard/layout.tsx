@@ -44,11 +44,12 @@ export default async function DashboardLayout({children} : {children: ReactNode}
                         <Link href='/' className=' flex items-center gap-2'>
                             <Image src={Logo} alt='logo' className=' size-6'/>
                             <p className=' text-xl font-bold'>
-                                Cal<span>Pro</span>
+                                Caln.com
                             </p>
                         </Link>
                     </div>
-
+                    
+                    {/* flex-1 will take whole height  */}
                     <div className=' flex-1'>
                         <nav className=' grid items-start px-2 lg:px-4'>
                             <DashLinks />
